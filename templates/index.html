@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To-Do List</title>
+  </head>
+  <body>
+    <h1>To-Do List</h1>
+    <ul>
+      {% for item in to_do_list %}
+        <li>
+          {{ item }}
+          <form action="/complete" method="post" style="display:inline;">
+            <input type="hidden" name="index" value="{{ loop.index0 }}">
+            <button type="submit">Complete</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+    <form action="/add" method="post">
+      <label for="new_item">New Item:</label>
+      <input type="text" id="new_item" name="new_item">
+      <button type="submit">Add</button>
+    </form>
+  </body>
+</html>
